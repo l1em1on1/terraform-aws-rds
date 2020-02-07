@@ -107,6 +107,12 @@ resource "aws_db_instance" "this" {
     delete = lookup(var.timeouts, "delete", null)
     update = lookup(var.timeouts, "update", null)
   }
+
+  lifecycle {
+    ignore_changes = [
+      "password"
+    ]
+  }
 }
 
 resource "aws_db_instance" "this_mssql" {
@@ -177,6 +183,12 @@ resource "aws_db_instance" "this_mssql" {
     create = lookup(var.timeouts, "create", null)
     delete = lookup(var.timeouts, "delete", null)
     update = lookup(var.timeouts, "update", null)
+  }
+
+  lifecycle {
+    ignore_changes = [
+      "password"
+    ]
   }
 }
 
